@@ -1,0 +1,82 @@
+JFDML JFormDesigner: "6.0.2.0.116" Java: "1.8.0_40-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+			"$columnSpecs": "default:grow, labelcompgap, default:grow, labelcompgap, default:grow"
+			"$rowSpecs": "default:grow, linegap, default:grow, linegap, default:grow"
+		} ) {
+			name: "this"
+			"background": new java.awt.Color( 255, 255, 255, 255 )
+			add( new FormComponent( "javax.swing.JTable" ) {
+				name: "table1"
+				"background": sfield java.awt.Color lightGray
+				"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+					add( new java.util.Vector {
+						add( "等丰富的" )
+						add( "的 v 发的 v 分" )
+						add( null )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+				}, new java.util.Vector {
+					add( null )
+					add( null )
+					add( null )
+					add( null )
+				}, new java.util.Vector {
+					add( null )
+					add( null )
+					add( null )
+					add( null )
+				}, new java.util.Vector {
+					add( null )
+					add( null )
+					add( null )
+					add( null )
+				}, new java.util.Vector {
+					add( null )
+					add( null )
+					add( null )
+					add( null )
+				} )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridWidth": 5
+				"gridHeight": 5
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}

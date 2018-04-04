@@ -1,0 +1,107 @@
+JFDML JFormDesigner: "6.0.2.0.116" Java: "1.8.0_40-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+			"$columnSpecs": "default:grow, labelcompgap, default, labelcompgap, default:grow, labelcompgap, default:grow"
+			"$rowSpecs": "default, linegap, default, linegap, default, linegap, default:grow, linegap, default:grow, linegap, default:grow, linegap, default:grow, linegap, default:grow, linegap, default:grow, linegap, default:grow, linegap, default:grow, linegap, default:grow, linegap, default:grow, linegap, default:grow, linegap, default:grow, linegap, default"
+		} ) {
+			name: "this"
+			"background": new java.awt.Color( 204, 255, 204, 255 )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": " IC停车卡发行成功!"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/resources/images/成功.png" )
+				"foreground": new java.awt.Color( 0, 0, 0, 255 )
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 3
+				"gridY": 3
+				"hAlign": sfield com.jgoodies.forms.layout.CellConstraints RIGHT
+			} )
+			add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsSeparator" ) {
+				name: "separator1"
+				"text": "本次发行的IC卡详情"
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 3
+				"gridY": 5
+				"gridWidth": 3
+			} )
+			add( new FormComponent( "javax.swing.JTable" ) {
+				name: "table1"
+				"rowHeight": 35
+				"background": new java.awt.Color( 255, 255, 255, 255 )
+				"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+					add( new java.util.Vector {
+						add( "IC卡号:" )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( "IC卡类型:" )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( "姓名:" )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( "性别:" )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( "手机号:" )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( "生效时间:" )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( "到期时间:" )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( "可停车次数:" )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( "总金额:" )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( "IC卡状态:" )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( "备注:" )
+						add( null )
+					} )
+				}, new java.util.Vector {
+					add( null )
+					add( null )
+				}, new java.util.Vector {
+					add( null )
+					add( null )
+				}, new java.util.Vector {
+					add( false )
+					add( false )
+				}, new java.util.Vector {
+					add( null )
+					add( null )
+				} )
+				"foreground": new java.awt.Color( 0, 0, 0, 255 )
+				"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, true )
+				"cellSelectionEnabled": true
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 3
+				"gridY": 7
+				"gridHeight": 23
+				"gridWidth": 3
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 405, 535 )
+		} )
+	}
+}

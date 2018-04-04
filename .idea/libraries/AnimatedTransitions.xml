@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="AnimatedTransitions">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/AnimatedTransitions.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/AppFramework.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/beautyeye_lnf.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jardiff.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jnlp-servlet.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jnlp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/swing-worker.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/swingx.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/TimingFramework.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
