@@ -6,6 +6,7 @@ import com.sun.swingset3.sql.ParkingLotDBUtils;
 import com.sun.swingset3.sql.bean.CarInBean;
 import com.sun.swingset3.test.CarInLeft;
 import com.sun.swingset3.test.CarInRight;
+import com.sun.swingset3.utilities.LoginInfo;
 import org.jb2011.lnf.beautyeye.utils.JVM;
 
 import javax.accessibility.Accessible;
@@ -37,6 +38,8 @@ public class CarOutFirstPanel extends DemoModule {
     CarInLeft carInLeft = new CarInLeft();
 
     String carOutPictue = null;
+
+    String carOutPictureName = null;
 
     CarInRight carInRight = null;
 
@@ -978,6 +981,8 @@ public class CarOutFirstPanel extends DemoModule {
             int n = fileChooser.showOpenDialog(fileChooser);
             if (n == fileChooser.APPROVE_OPTION) {
                 carOutPictue = fileChooser.getSelectedFile().getPath();
+                carOutPictureName = fileChooser.getSelectedFile().getName().substring
+                        (0,fileChooser.getSelectedFile().getName().lastIndexOf('.'));
                 ImageIcon image = new ImageIcon(carOutPictue);
                 Image img = image.getImage();
                 img = img.getScaledInstance(400, 330, Image.SCALE_DEFAULT);
@@ -1023,8 +1028,8 @@ public class CarOutFirstPanel extends DemoModule {
 
         @Override
         public void run() {
-            carInBean = dbUtils.queryCarInBean(3);
-            dbUtils.queryCarInLog("闽A20678",carInBean);
+            carInBean = dbUtils.queryCarInBean(LoginInfo.userId);
+            dbUtils.queryCarInLog(carOutPictureName,carInBean);
             carInBean.setCarOutTime(new Date());
             carInBean.setCarOutPicturePath(carOutPictue);
             ImageIcon image = new ImageIcon(carInBean.getCarInPicturePath());

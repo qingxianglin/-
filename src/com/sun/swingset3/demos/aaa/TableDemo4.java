@@ -43,6 +43,7 @@ public class TableDemo4 extends DemoModule {
         JButton prePageButton = new JButton("上一页");
         JButton nextPageButton = new JButton("下一页");
         JButton lastPageButton = new JButton("尾页");
+        JButton createParkingLot = new JButton("新建停车场");
 
         public Object[][] findData(int currentPage, int pageSize){
             int totalRowCount = parkingLotDBUtils.queryParkingLotCount(null);
@@ -104,6 +105,14 @@ public class TableDemo4 extends DemoModule {
                     showTable(getLastPage());
                 }
             });
+
+            createParkingLot.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    tabbedPane.add("新建停车场",new TableDemo5(tabbedPane).getDemoPanel());
+                    tabbedPane.setSelectedIndex(1);
+                }
+            });
             int totalRowCount = parkingLotDBUtils.queryParkingLotCount(null);
             if(totalRowCount%pageSize==0){
                 setLastPage(totalRowCount/getPageSize());
@@ -155,6 +164,8 @@ public class TableDemo4 extends DemoModule {
     JTable tableView;
 
     JScrollPane scrollpane;
+
+    JTabbedPane tabbedPane;
 
     Dimension origin = new Dimension(0, 0);
 
@@ -214,6 +225,7 @@ public class TableDemo4 extends DemoModule {
     }
 
     public TableDemo4(final JTabbedPane parentTabbedPanel) {
+        tabbedPane = parentTabbedPanel;
         getDemoPanel().setLayout(new BorderLayout());
         controlPanel = new JPanel();
         controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.X_AXIS));
@@ -358,6 +370,7 @@ public class TableDemo4 extends DemoModule {
         pagePanel.add(pageList.prePageButton);
         pagePanel.add(pageList.nextPageButton);
         pagePanel.add(pageList.lastPageButton);
+        pagePanel.add(pageList.createParkingLot);
         getDemoPanel().add(pagePanel, BorderLayout.NORTH);
 
         // ComboBox for selection modes.

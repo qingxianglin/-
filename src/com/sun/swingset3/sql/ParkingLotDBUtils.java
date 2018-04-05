@@ -78,7 +78,7 @@ public class ParkingLotDBUtils extends DBUtilBase {
 
     //车辆进出记录数目查询
     public Integer queryCarInBeanCount(CarInBean queryBean){
-        String sql = "SELECT count(*) from parking_log";
+        String sql = "SELECT count(*) from parking_log where leave_time is not null";
         Connection conn = getConnection();
         PreparedStatement pstmt = getStatement(conn,sql);
         try{
@@ -174,7 +174,7 @@ public class ParkingLotDBUtils extends DBUtilBase {
                 "from parking_log as t1," +
                 "parkinglot_info as t2," +
                 "manager_info as t3 " +
-                "where t1.manager_id = t3.id and t1.parkinglot_id = t2.id limit ?,?";
+                "where t1.manager_id = t3.id and t1.parkinglot_id = t2.id and t1.leave_time is not null limit ?,?";
         Connection conn = getConnection();
         PreparedStatement pstmt = getStatement(conn,sql);
         try{

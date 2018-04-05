@@ -2,6 +2,7 @@ package com.sun.swingset3.demos.aaa;
 import com.sun.swingset3.DemoModule;
 import com.sun.swingset3.sql.ParkingLotDBUtils;
 import com.sun.swingset3.sql.bean.CarInBean;
+import com.sun.swingset3.utilities.LoginInfo;
 import org.jb2011.lnf.beautyeye.utils.JVM;
 
 import javax.accessibility.Accessible;
@@ -384,7 +385,7 @@ public class TableDemo7 extends DemoModule {
         stopSpaceField = new JTextField(25);
         fitWidth = new JCheckBox(getString("TableDemo.fitWidth"), true);
         printButton = new JButton("查询车辆所在的停车位及路径");
-        final CarInBean carInBean = parkingLotDBUtils.queryCarInBean(3);
+        final CarInBean carInBean = parkingLotDBUtils.queryCarInBean(LoginInfo.userId);
         printButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 parkingLotDBUtils.queryCarInLog(footerTextField.getText(),carInBean);

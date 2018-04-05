@@ -62,8 +62,10 @@ public class TableDemo6 extends DemoModule {
             SimpleDateFormat sdf = new SimpleDateFormat("YYYY年-MM月-DD日 HH时:MM分:SS秒");
             for(int i = startIndex;i<endIndex;++i){
                 CarInBean tempbean = temp.get(index);
+                Image in = new ImageIcon(tempbean.getCarInPicturePath()).getImage().getScaledInstance(99,46,Image.SCALE_DEFAULT);
+                Image out = new ImageIcon(tempbean.getCarOutPicturePath()).getImage().getScaledInstance(99,46,Image.SCALE_DEFAULT);
                 tempList[index] = new Object[]{sdf.format(tempbean.getCarInTime().getTime()),sdf.format(tempbean.getCarOutTime().getTime()),tempbean.getCarNo(),
-                tempbean.getAddress(),tempbean.getManagerName(),tempbean.getCost(),new ImageIcon(tempbean.getCarInPicturePath()),new ImageIcon(tempbean.getCarOutPicturePath())};
+                tempbean.getAddress(),tempbean.getManagerName(),tempbean.getCost(),new ImageIcon(in),new ImageIcon(out)};
                 ++index;
             }
             System.out.println("开始"+startIndex+",结束"+endIndex+",长度"+tempList.length);
@@ -786,7 +788,7 @@ public class TableDemo6 extends DemoModule {
             }
 
             public boolean isCellEditable(int row, int col) {
-                return col != 5;
+                return false;
             }
 
             public void setValueAt(Object aValue, int row, int column) {
@@ -834,7 +836,18 @@ public class TableDemo6 extends DemoModule {
         /*TableColumn colorColumn = tableView.getColumn("收费员");
         // Use the combo box as the editor in the "Favorite Color" column.
         colorColumn.setCellEditor(new DefaultCellEditor(comboBox));*/
+        TableColumn column1 = tableView.getColumn("车辆入场抓拍照片");
+        TableColumn column2 = tableView.getColumn("车辆出场抓拍照片");
+        tableView.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(e.getClickCount()==2){
+                    if(tableView.getSelectedColumn()==7 || tableView.getSelectedColumn()==6){
 
+                    }
+                }
+            }
+        });
         colorRenderer.setHorizontalAlignment(JLabel.CENTER);
         /*colorColumn.setCellRenderer(colorRenderer);*/
 

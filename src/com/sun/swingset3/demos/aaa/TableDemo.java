@@ -30,6 +30,7 @@ import com.sun.swingset3.DemoModule;
 import com.sun.swingset3.demos.tabbedpane.TabbedPaneDemo;
 import com.sun.swingset3.sql.ParkingLotDBUtils;
 import com.sun.swingset3.sql.bean.CarInBean;
+import com.sun.swingset3.utilities.LoginInfo;
 import org.jb2011.lnf.beautyeye.utils.JVM;
 
 public class TableDemo extends DemoModule {
@@ -941,7 +942,7 @@ public class TableDemo extends DemoModule {
 
         @Override
         public void run() {
-            carInBean = dbUtils.queryCarInBean(3);
+            carInBean = dbUtils.queryCarInBean(LoginInfo.userId);
             ImageIcon image = new ImageIcon("C:\\Users\\franklin\\Desktop\\ParkingLotManager\\ParkingLotManager\\src\\com\\sun\\swingset3\\demos\\tabbedpane\\resources\\images\\识别成功.png");
             Image img = image.getImage();
             img = img.getScaledInstance(60, 60, Image.SCALE_DEFAULT);

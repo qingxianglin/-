@@ -35,6 +35,7 @@ import com.sun.swingset3.DemoProperties;
 import com.sun.swingset3.demos.ResourceManager;
 import com.sun.swingset3.demos.aaa.TableDemo;
 import com.sun.swingset3.demos.aaa.TableDemo4;
+import com.sun.swingset3.demos.aaa.TableDemo5;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -141,7 +142,7 @@ public class TabbedPaneDemo8 extends JPanel implements ActionListener {
         add(tabbedpane, BorderLayout.CENTER);
 
         tabbedpane.add("停车场信息综合查询",new TableDemo4(tabbedpane).getDemoPanel());
-
+        tabbedpane.add("新建停车场",new TableDemo5(tabbedpane).getDemoPanel());
         //JPanel parking = new TableDemo2(tabbedpane).getDemoPanel();
         //tabbedpane.add("停车位动态调度", parking);
 
