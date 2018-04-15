@@ -1,9 +1,17 @@
 package com.sun.swingset3.demos.aaa;
 
 
+import com.DataUtils;
+import com.eltima.components.ui.DatePicker;
 import com.sun.swingset3.DataAnalysis;
 import com.sun.swingset3.DemoModule;
+import com.sun.swingset3.PieChart3D;
+import com.sun.swingset3.XYLineChart;
+import com.sun.swingset3.demos.tabbedpane.test.DatePickerUtils;
+import com.sun.swingset3.sql.ParkingLotDBUtils;
 import com.sun.swingset3.sql.bean.AuthBean;
+import com.sun.swingset3.sql.bean.CarInBean;
+import com.sun.swingset3.utilities.LoginInfo;
 import org.jb2011.lnf.beautyeye.utils.JVM;
 
 import javax.accessibility.Accessible;
@@ -35,6 +43,9 @@ import java.util.TimerTask;
 import java.util.Vector;
 
 public class DataAnalysisPanel extends DemoModule {
+    JPanel jp1,jp2,jp3;
+    ParkingLotDBUtils dbUtils = new ParkingLotDBUtils();
+    DatePicker datePicker = DatePickerUtils.getDatePicker();
     TableDemo11 tableDemo11 = new TableDemo11(null);
     //车辆入场抓拍图像
     JLabel carInImage = new JLabel();
@@ -128,10 +139,10 @@ public class DataAnalysisPanel extends DemoModule {
                 return new Dimension(getPreferredSize().width, super.getMaximumSize().height);
             }
         };
-        JPanel comboPanel = new JPanel();
+        final JPanel comboPanel = new JPanel();
         comboPanel.setLayout(new BoxLayout(comboPanel, BoxLayout.X_AXIS));
 
-        JPanel comboPanel2 = new JPanel(new ColumnLayout());
+        final JPanel comboPanel2 = new JPanel(new ColumnLayout());
         JPanel printPanel = new JPanel(new ColumnLayout());
         comboPanel.add(printPanel);
 
@@ -255,56 +266,67 @@ public class DataAnalysisPanel extends DemoModule {
         // END
         //getDemoPanel().add(tttp, BorderLayout.CENTER);
 
-        comboPanel.setBorder(new TitledBorder("权限信息查询条件"));
-        comboPanel2.setBorder(new TitledBorder("权限信息列表"));
-        DataAnalysis d1 = new DataAnalysis();
-        DataAnalysis d2 = new DataAnalysis();
-        DataAnalysis d3 = new DataAnalysis();
-        JPanel jp1 = d1.getImage();
-        jp1.setBorder(new LineBorder(Color.black));
-        JPanel jp2 = d2.getImage();
-        jp2.setBorder(new LineBorder(Color.black));
-        JPanel jp3 = d3.getImage();
-        jp3.setBorder(new LineBorder(Color.black));
+        comboPanel.setBorder(new TitledBorder("数据分析图表-查询条件"));
+        comboPanel2.setBorder(new TitledBorder("数据图表"));
 
-        comboPanel2.add(jp1);
-        comboPanel2.add(jp2);
-        comboPanel2.add(jp3);
         // print panel
         printPanel.setBorder(new TitledBorder("请输入对应的查询条件:"));
-        headerLabel = new JLabel("权限ID:");
-        headerLabel1 = new JLabel("权限中文名称(模糊匹配):");
-        footerLabel = new JLabel("权限英文名称(模糊匹配):");
+        headerLabel = new JLabel("停车场ID(不可编辑):");
+        headerLabel1 = new JLabel("停车场地址(不可编辑):");
+        footerLabel = new JLabel("请选择要查询的日期:");
         footerLabel1 = new JLabel("车牌号码:");
         headerTextField = new JTextField(25);
         headerTextField1 = new JTextField(25);
         footerTextField = new JTextField(25);
         footerTextField1 = new JTextField(25);
         fitWidth = new JCheckBox(getString("TableDemo.fitWidth"), true);
-        printButton = new JButton("确认信息无误,下一步");
+        printButton = new JButton("生成数据分析图表");
+        final DataAnalysis d1 = new DataAnalysis();
+        final PieChart3D d2 = new PieChart3D();
+        final XYLineChart d3 = new XYLineChart();
+        jp1 = d1.getImage();
+        jp1.setBorder(new LineBorder(Color.black));
+        jp2 = d2.getImage();
+        jp2.setBorder(new LineBorder(Color.black));
+        jp3 = d3.getImage();
+        jp3.setBorder(new LineBorder(Color.black));
+        comboPanel2.add(jp1);
+        comboPanel2.add(jp2);
+        comboPanel2.add(jp3);
+        final DataUtils dataUtils = new DataUtils();
+
+        int index = (int)(Math.random()*4);
+        d1.updateData(money[index]);
+        d2.updateData(money[index]);
+        comboPanel2.remove(1);
+        comboPanel2.remove(0);
+        comboPanel2.add(d2.getImage(),0);
+        comboPanel2.add(d1.getImage(),0);
+        comboPanel2.updateUI();
+
         printButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                AuthBean queryBean = new AuthBean();
-                String authId = headerTextField.getText();
-                if(authId!=null && !authId.equals("")){
-                    queryBean.setId(Integer.parseInt(authId));
-                }
-                String authNameZh = headerTextField1.getText();
-                queryBean.setNameZh(authNameZh);
-                String authNameEn = footerTextField.getText();
-                queryBean.setNameEn(authNameEn);
-                tableDemo11.query(queryBean);
+                int index = (int)(Math.random()*4);
+                d1.updateData(money[index]);
+                d2.updateData(money[index]);
+                comboPanel2.remove(1);
+                comboPanel2.remove(0);
+                comboPanel2.add(d2.getImage(),0);
+                comboPanel2.add(d1.getImage(),0);
+                comboPanel2.updateUI();
             }
         });
-
+        CarInBean carInBean = dbUtils.queryCarInBean(LoginInfo.userId);
         printPanel.add(headerLabel);
         printPanel.add(headerTextField);
+        headerTextField.setEditable(false);
+        headerTextField1.setEditable(false);
+        headerTextField.setText(carInBean.getParkingLotId().toString());
         printPanel.add(headerLabel1);
         printPanel.add(headerTextField1);
+        headerTextField1.setText(carInBean.getAddress());
         printPanel.add(footerLabel);
-        printPanel.add(footerTextField);
-        //printPanel.add(footerLabel1);
-        //printPanel.add(footerTextField1);
+        printPanel.add(datePicker);
 
         JPanel buttons = new JPanel();
         //buttons.add(fitWidth);
@@ -940,4 +962,20 @@ public class DataAnalysisPanel extends DemoModule {
             headerTextField.setText(sdf.format(d));
         }
     }
+    Integer[][] money = {{
+            30,45,70,100,95,80,120,105,70,80,60,130,120,100,70,80
+    },
+            {
+                    50,65,80,100,75,70,90,115,80,80,97,110,130,120,70,30
+            },
+
+            {
+                    40,75,70,110,65,50,77,105,82,83,95,100,97,110,60,50
+            },
+
+            {
+                    30,65,90,110,95,80,95,125,90,70,95,100,138,110,79,60
+            },
+
+    };
 }

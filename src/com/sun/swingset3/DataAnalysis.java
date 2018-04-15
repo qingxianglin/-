@@ -19,35 +19,22 @@ public class DataAnalysis extends JFrame {
     public DataAnalysis(){
         //构造DataSet
         DefaultCategoryDataset DataSet = new DefaultCategoryDataset();
-        DataSet.addValue(300, "number", "测试停车场1");
-        DataSet.addValue(400, "number", "测试停车场2");
-        DataSet.addValue(250, "number", "测试停车场3");
-        DataSet.addValue(330, "number", "测试停车场4");
-        DataSet.addValue(420, "number", "测试停车场5");
-        DataSet.addValue(300, "number", "测试停车场6");
-        DataSet.addValue(400, "number", "测试停车场7");
-        DataSet.addValue(250, "number", "测试停车场8");
-        DataSet.addValue(330, "number", "测试停车场9");
-        DataSet.addValue(400, "number", "测试停车场12");
-        DataSet.addValue(250, "number", "测试停车场23");
-        DataSet.addValue(330, "number", "测试停车场34");
-        DataSet.addValue(420, "number", "测试停车场45");
-        DataSet.addValue(300, "number", "测试停车场56");
-        DataSet.addValue(400, "number", "测试停车场67");
-        DataSet.addValue(250, "number", "测试停车场68");
-        DataSet.addValue(330, "number", "测试停车场59");
-        DataSet.addValue(300, "number", "测试停车场226");
-        DataSet.addValue(400, "number", "测试停车场227");
-        DataSet.addValue(250, "number", "测试停车场338");
-        DataSet.addValue(330, "number", "测试停车场1119");
-        DataSet.addValue(400, "number", "测试停车场1222");
-        DataSet.addValue(250, "number", "测试停车场2ww3");
-        DataSet.addValue(330, "number", "测试停车场33w4");
-        DataSet.addValue(420, "number", "测试停车场4ww5");
-        DataSet.addValue(300, "number", "测试停车场56");
-        DataSet.addValue(400, "number", "测试停车场67");
-        DataSet.addValue(250, "number", "测试停车场68");
-        DataSet.addValue(330, "number", "测试停车场59");
+        DataSet.addValue(7, "number", "上午7点");
+        DataSet.addValue(8, "number", "上午8点");
+        DataSet.addValue(9, "number", "上午9点");
+        DataSet.addValue(10, "number", "上午10点");
+        DataSet.addValue(11, "number", "上午11点");
+        DataSet.addValue(12, "number", "上午12点");
+        DataSet.addValue(13, "number", "下午13点");
+        DataSet.addValue(14, "number", "下午14点");
+        DataSet.addValue(15, "number", "下午15点");
+        DataSet.addValue(16, "number", "下午16点");
+        DataSet.addValue(17, "number", "下午17点");
+        DataSet.addValue(18, "number", "晚上18点");
+        DataSet.addValue(19, "number", "晚上19点");
+        DataSet.addValue(20, "number", "晚上20点");
+        DataSet.addValue(21, "number", "晚上21点");
+        DataSet.addValue(22, "number", "晚上22点");
         //创建柱形图
         JFreeChart chart = ChartFactory.createBarChart3D("停车场收入柱形图",
                 "停车场名称", "当天收入", DataSet, PlotOrientation.VERTICAL,
@@ -57,12 +44,23 @@ public class DataAnalysis extends JFrame {
         //用来放置图表
         ChartPanel panel = new ChartPanel(chart);
         this.image = panel;
-        /*JPanel jp = new JPanel();
-        jp.add(panel, BorderLayout.CENTER);
-        this.add(jp);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setBounds(100, 100, 700, 500);
-        this.setVisible(true);*/
+    }
+
+    public void updateData(Integer[] data){
+        //构造DataSet
+        DefaultCategoryDataset DataSet = new DefaultCategoryDataset();
+        for(int i = 7;i<=22;++i){
+            DataSet.addValue(data[i-7], "number", "上午"+i+"点");
+        }
+        //创建柱形图
+        JFreeChart chart = ChartFactory.createBarChart3D("停车场收入柱形图",
+                "停车场名称", "当天收入", DataSet, PlotOrientation.VERTICAL,
+                false, false, false);
+        //处理中文显示乱码问题
+        handleFont(chart);
+        //用来放置图表
+        ChartPanel panel = new ChartPanel(chart);
+        this.image = panel;
     }
 
     /**

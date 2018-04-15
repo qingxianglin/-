@@ -130,11 +130,8 @@ public class SwingSet3 extends SingleFrameApplication  {
         f.setTitle("停车场缴费管理系统登录界面");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        f.setVisible(true);
 
         //设置窗口的大小和位置
-        f.setSize(400,300);
-        f.setLocation(200,200);
 
         final Container con=f.getContentPane();//生成一个容器
         con.setLayout(new GridLayout(7,1));
@@ -197,6 +194,9 @@ public class SwingSet3 extends SingleFrameApplication  {
         JPanel pan7 = new JPanel();
         con.add(pan7);
         //空白版面
+        f.setSize(400,300);
+        f.setLocation(200,200);
+        f.setVisible(true);
     }
 
     public static boolean runningOnMac() {

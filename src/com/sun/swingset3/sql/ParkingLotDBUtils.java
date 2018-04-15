@@ -1055,7 +1055,7 @@ public class ParkingLotDBUtils extends DBUtilBase {
                 userBean.setPicturePath(rs.getString("photo"));
                 userBean.setBirthday(rs.getDate("date_birthday"));
                 userBean.setPassword(rs.getString("password"));
-                userBean.setAccount(rs.getString("account"));
+                userBean.setAccount(rs.getInt("id")+"");
                 userBean.setPath(rs.getString("path"));
                 userBeans.add(userBean);
             }
